@@ -145,8 +145,8 @@ function generate_random_password($length = 10) {
                                         <?php
                                         if (isset($_POST['password-submit'])) {
                                             if (!empty($_POST['email'])) {
-//                                                $email = $_POST['email'];
-                                                $email = "fangyu95@hotmail.sg";
+                                                $email = $_POST['email'];
+//                                                $email = "fangyu95@hotmail.sg";
                                                 $get_user_id_query = "SELECT * FROM users WHERE userEmail ='$email'";
                                                 $result = mysqli_query($db, $get_user_id_query);
                                                 if (mysqli_num_rows($result) == 1) {
@@ -171,11 +171,16 @@ function generate_random_password($length = 10) {
                                                     $updatePassword = "UPDATE users SET userPassword = '" . $tempPassword . "' WHERE userID = '" . $userID . "'";
                                                     $updateResult = mysqli_query($db, $updatePassword);
                                                     //redirect back 
-                                                    header("Location: ../index.php?msg=ok");
+                                                    header("Location: ../index.php");
+                                                } else {
+                                                    echo'<script>';
+                                                    echo 'alert("Invalid email")';
+                                                    echo '</script>';
                                                 }
                                             }
                                         } else {
-                                            header("Location:../index.php?msg=invaild_email");
+//                                            header("Location:../index.php");
+                                            
                                         }
                                         ?>
                                     </div>

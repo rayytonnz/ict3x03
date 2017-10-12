@@ -1,7 +1,7 @@
 <?php
 
 function setRoleOptions() {
-	if (isset($_SESSION['role'])) {
+	if (isset($_SESSION['userRole'])) {
 		include_once "../constant.php";
 		include_once "../configuration/config.php";
 	} else {
@@ -14,7 +14,7 @@ function setRoleOptions() {
 
 	//populate the roles from database
 	while ($row = mysqli_fetch_assoc($roles_result)) {
-	    echo '<option value="' . $row['userRole'] . '">' . $row['role'] . '</option>';
+	    echo '<option value="' . $row['userID'] . '">' . $row['userRole'] . '</option>';
 	}
 
 }

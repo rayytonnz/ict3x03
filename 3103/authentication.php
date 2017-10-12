@@ -1,28 +1,31 @@
 <?php
 
-/** This file does the session managment and misc functions* */
+/** This file does the session management and misc functions* */
 session_start();
 include "constant.php";
 
-function session_admin_role_check() {
-    if ($_SESSION['role'] == CASHIER) {
+function session_cashier_role_check() {
+    if ($_SESSION['userRole'] == CASHIER) {
         //ok
+        
     } else {
-//        header("Location:../Error/unauthorizedPage.php");
-        echo '<script language="javascript">';
-        echo 'alert("Unauthorised Access!")';
-        echo '</script>';
+        header("Location:../Error/unauthorizedPage.php");
     }
 }
 
-function session_trainer_role_check() {
-    if ($_SESSION['role'] == CUSTOMER) {
+function session_customer_role_check() {
+    if ($_SESSION['userRole'] == CUSTOMER) {
         //ok
     } else {
-//        header("Location:../Error/unauthorizedPage.php");
-        echo '<script language="javascript">';
-        echo 'alert("Unauthorised Access!")';
-        echo '</script>';
+        header("Location:../Error/unauthorizedPage.php");
+    }
+}
+
+function session_admin_role_check() {
+    if ($_SESSION['userRole'] == ADMIN) {
+        //ok
+    } else {
+        header("Location:../Error/unauthorizedPage.php");
     }
 }
 

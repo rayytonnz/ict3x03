@@ -8,15 +8,12 @@ include"../authentication.php";
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$getRole = $_SESSION['userRole'];
-echo $getRole;
-
-$getEmail = $_SESSION['userEmail'];
-echo $getEmail;
 $getID = $_SESSION['userID'];
-echo $getID;
+//echo $getID;
+$getEmail = $_SESSION['userEmail'];
+//echo $getEmail;
 
-session_cashier_role_check();
+session_admin_role_check();
 ?>
 
 <html>
@@ -44,8 +41,8 @@ session_cashier_role_check();
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>CASHIER Homepage</h3>
-                    <!--TODO: ENTER CUSTOMER PHONE NUMBER-->
+                    <h3>ADMIN Homepage</h3>
+                    <!--TODO: VIEW ALL CREDIT INFORMATION-->
                     <form method="post" action="../ForgetPassword/confirmPasswordResetPage.php">
                         <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Reset Password">
                     </form>

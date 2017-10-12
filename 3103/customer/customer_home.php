@@ -1,17 +1,21 @@
 <?php
-session_start();
-include_once "../userInformation.php";
+//session_start();
+//include_once "../userInformation.php";
 include "../config.php";
+include"../authentication.php";
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$getID = $_SESSION['userID'];
-//echo $getID;
+
+
+$getRole = $_SESSION['userRole'];
+echo $getRole;
 
 $getEmail = $_SESSION['userEmail'];
-//echo $getEmail;
+echo $getEmail;
+session_customer_role_check();
 ?>
 
 <html>
@@ -40,7 +44,7 @@ $getEmail = $_SESSION['userEmail'];
             <div class="row">
                 <div class="col-lg-12">
                     <!--TODO: Tab to show account details and OTP page-->
-                    <p>hi customer</p>
+                    <h3>CUSTOMER Homepage</h3>
                     <form method="post" action="../ForgetPassword/confirmPasswordResetPage.php">
                         <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Reset Password">
                     </form>
