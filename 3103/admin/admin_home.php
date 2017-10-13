@@ -20,7 +20,7 @@ session_admin_role_check();
     <head>
         <meta charset="UTF-8">
         <script src="Js/checkCapsLock.js"></script>
-
+        <link rel="stylesheet" href="../css/navigation.css" type="text/css"/>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -38,17 +38,19 @@ session_admin_role_check();
         <title></title>
     </head>
     <body>
+        <div class="topnav">
+            <a class="active" href="admin_home.php">Home</a>            
+            <a id="right" href="../doLogout.php" class="btn-logout">Logout</a>
+            <a id="right" href="admin_profile.php">Profile</a>
+        </div>
+
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12">
                     <h3>ADMIN Homepage</h3>
                     <!--TODO: VIEW ALL CREDIT INFORMATION-->
-                    <form method="post" action="../ForgetPassword/confirmPasswordResetPage.php">
-                        <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Reset Password">
-                    </form>
-                     <li class="navbar-right">
-                            <a href="../doLogout.php" class="btn-logout">[ <u>Log out</u> ]</a>
-                    </li>
+                   
+                    
                 </div>
             </div>
         </div>
