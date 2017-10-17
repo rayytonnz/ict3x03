@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14 Oct, 2017, 12:29:13 AM
+    Author     : janice
+*/
+
+h1{
+    text-align: center;
+}
+
+body, html{
+    background-image: url("../img/fontPage.jpg");
+    height: 100%; 
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+.row{
+    background-color: #004883;
+    color:white;
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+

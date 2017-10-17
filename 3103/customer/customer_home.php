@@ -11,10 +11,10 @@ include"../authentication.php";
 
 
 $getRole = $_SESSION['userRole'];
-echo $getRole;
+//echo $getRole;
 
 $getEmail = $_SESSION['userEmail'];
-echo $getEmail;
+//echo $getEmail;
 session_customer_role_check();
 ?>
 
@@ -39,6 +39,8 @@ session_customer_role_check();
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js">
         </script>
+        
+        <link rel="stylesheet" type="text/css" href="../css/content.css">
         <title></title>
     </head>
     <body>
@@ -55,7 +57,8 @@ session_customer_role_check();
             <div class="row">
                 <div class="col-lg-12">
                     <!--TODO: Tab to show account details and OTP page-->
-                    <h3>CUSTOMER Homepage</h3>
+                    <h3>One Time Password</h3>
+                    
                 </div>
             </div>
         </div>

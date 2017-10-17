@@ -12,6 +12,7 @@ include "config.php";
 
 <!-- email function -->
 <?php
+
 function send_mail($email, $message, $subject) {
     require_once('PhpMailer/PHPMailerAutoload.php');
     $mail = new PHPMailer();
@@ -34,20 +35,20 @@ function send_mail($email, $message, $subject) {
 //generate random temporary password
 //TODO: SET EXPIRY
 function generate_random_password($length = 10) {
-    $alphabets = range('A','Z');
-    $numbers = range('0','9');
-    $additional_characters = array('_','.');
-    $final_array = array_merge($alphabets,$numbers,$additional_characters);
-         
+    $alphabets = range('A', 'Z');
+    $numbers = range('0', '9');
+    $additional_characters = array('_', '.');
+    $final_array = array_merge($alphabets, $numbers, $additional_characters);
+
     $password = '';
-  
-    while($length--) {
-      $key = array_rand($final_array);
-      $password .= $final_array[$key];
+
+    while ($length--) {
+        $key = array_rand($final_array);
+        $password .= $final_array[$key];
     }
-  
+
     return $password;
-  }
+}
 ?>
 <html>
     <head>
@@ -71,6 +72,8 @@ function generate_random_password($length = 10) {
         <script src="sweetalert/dist/sweetalert-dev.js"></script>
         <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
         <script src="Js/alertMessage.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/login.css">
         <title>Shopping Credits</title>
     </head>
     <body>
@@ -78,9 +81,10 @@ function generate_random_password($length = 10) {
             <div class="row">
                 <div class="col-lg-12">
                     <!--login-->
+                    <h1>Welcome to this site </h1>
                     <form data-toggle="validator" id="login-form" method="post" role="form" action="doLogin.php" style="display: block;">
                         <div class="form-group col-md-12">
-                            <input class="form-control" data-error="Please enter username." type="text" name="username" id="username" tabindex="1"  placeholder="Username" required>
+                            <input class="form-control" data-error="Please enter email." type="text" name="username" id="username" tabindex="1"  placeholder="Email" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group col-md-12">
@@ -180,7 +184,6 @@ function generate_random_password($length = 10) {
                                             }
                                         } else {
 //                                            header("Location:../index.php");
-                                            
                                         }
                                         ?>
                                     </div>

@@ -4,10 +4,13 @@
     border-left: 1px solid #aaa;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+
 }
 
 .th{
     text-align: center;
+    background-color: #221F1F;
+    color: white;
 }
 
 .td{

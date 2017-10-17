@@ -59,6 +59,7 @@ var userID = <?php echo($getUserId); ?>;
     <style>
         body {
             padding-top: 20px;
+            background-color:#DFE3EE ;
         }
     </style>
 

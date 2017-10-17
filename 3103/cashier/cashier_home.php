@@ -9,12 +9,12 @@ include"../authentication.php";
  * and open the template in the editor.
  */
 $getRole = $_SESSION['userRole'];
-echo $getRole;
+//echo $getRole;
 
 $getEmail = $_SESSION['userEmail'];
-echo $getEmail;
+//echo $getEmail;
 $getID = $_SESSION['userID'];
-echo $getID;
+//echo $getID;
 
 session_cashier_role_check();
 ?>
@@ -38,23 +38,27 @@ session_cashier_role_check();
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js">
         </script>
+
+        <link rel="stylesheet" type="text/css" href="../css/content.css">
+        <link rel="stylesheet" href="../css/navigation.css" type="text/css"/>
         <title></title>
     </head>
     <body>
+        <div class="topnav">
+            <a class="active" href="cashier_home.php">Home</a> 
+            <a id="right" href="../doLogout.php" class="btn-logout">Logout</a>
+
+        </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-12">
-                    <h3>CASHIER Homepage</h3>
-                    <!--TODO: ENTER CUSTOMER PHONE NUMBER-->
-                    <form method="post" action="../ForgetPassword/confirmPasswordResetPage.php">
-                        <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Reset Password">
-                    </form>
-                     <li class="navbar-right">
-                            <a href="../doLogout.php" class="btn-logout">[ <u>Log out</u> ]</a>
-                    </li>
-                </div>
+
+                <h3>Select Option</h3>
+                <!--TODO: ENTER CUSTOMER PHONE NUMBER-->
+                <form method="post" action="../ForgetPassword/confirmPasswordResetPage.php">
+                    <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Reset Password">
+                </form>
+
             </div>
         </div>
-
     </body>
 </html>

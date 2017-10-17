@@ -26,13 +26,14 @@ mysqli_close($db);
         <link rel="stylesheet" type="text/css" href="../css/table.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/navigation.css" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="../css/content.css">
     </head>
 
     <body>
         <div class="topnav">
-            <a href="admin_home.php">Home</a>            
+            <a href="admin_home.php">Customer Account</a>
             <a id="right" href="../doLogout.php" class="btn-logout">Logout</a>
-            <a  class="active" id="right" href="admin_profile.php">Profile</a>
+            <a class="active" id="right" href="admin_profile.php">Profile</a>
         </div>
 
 
@@ -49,7 +50,8 @@ mysqli_close($db);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>\n";
                         echo "  <td  class='td'>" . $row['userEmail'] . "  </td>" . "\n";
-                        echo "  <td  class='td'>" . "<form method='post' action='../ForgetPassword/confirmPasswordResetPage.php'> <input class='button' type='submit' name='reset-submit' tabindex='4' class='form-control btn btn-blue' value='Reset Password'>". "</td>" . "\n";
+                        echo "  <td  class='td'>" . "<form method='post' action='../ForgetPassword/confirmPasswordResetPage.php'> <input class='button' type='submit' name='reset-submit' tabindex='4' class='form-control btn btn-blue' value='Reset Password'>" . "</td>" . "\n";
+                        echo "</tr>";
                     }
                     ?>
 
@@ -58,7 +60,7 @@ mysqli_close($db);
             </div>
         </div>
 
-        
+
     </body>
 
 </html>

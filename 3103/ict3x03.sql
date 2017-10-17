@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2017 at 06:40 AM
+-- Generation Time: Oct 17, 2017 at 09:45 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -23,6 +23,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `credit`
+--
+
+CREATE TABLE `credit` (
+  `creditID` int(11) NOT NULL,
+  `creditName` varchar(100) NOT NULL,
+  `creditPrice` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `credit`
+--
+
+INSERT INTO `credit` (`creditID`, `creditName`, `creditPrice`) VALUES
+(1, '5 DOLLAR', 7),
+(2, '10 DOLLAR', 13),
+(3, '15 DOLLAR', 20),
+(4, '20 DOLLAR', 26),
+(5, '30 DOLLAR', 39),
+(6, '50 DOLLAR', 65);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -30,17 +54,35 @@ CREATE TABLE `customers` (
   `custID` int(11) NOT NULL,
   `custEmail` varchar(100) NOT NULL,
   `custName` varchar(100) NOT NULL,
-  `custMobile` int(11) NOT NULL
+  `custMobile` int(11) NOT NULL,
+  `custCredit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`custID`, `custEmail`, `custName`, `custMobile`) VALUES
-(1, 'siyuan@hotmail.com', 'siyuan', 97705168),
-(2, 'fangyu95@hotmail.sg', 'fangyu', 97705168),
-(3, 'wongnz1992@hotmail.com', 'ningzhi', 97705168);
+INSERT INTO `customers` (`custID`, `custEmail`, `custName`, `custMobile`, `custCredit`) VALUES
+(1, 'wongnz1992@hotmail.com', 'ningzhi', 97705168, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `historyID` int(11) NOT NULL,
+  `historyCustomer` varchar(100) NOT NULL,
+  `historyCreditID` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`historyID`, `historyCustomer`, `historyCreditID`) VALUES
+(1, 'wongnz1992@hotmail.com', '1');
 
 -- --------------------------------------------------------
 
@@ -51,15 +93,18 @@ INSERT INTO `customers` (`custID`, `custEmail`, `custName`, `custMobile`) VALUES
 CREATE TABLE `numbers` (
   `numberMobile` int(8) NOT NULL,
   `numberCode` int(6) NOT NULL,
-  `numberVerified` int(11) NOT NULL
+  `numberVerified` int(11) NOT NULL,
+  `numberCashier` varchar(100) NOT NULL,
+  `numberVoucherID` int(11) NOT NULL,
+  `numberdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `numbers`
 --
 
-INSERT INTO `numbers` (`numberMobile`, `numberCode`, `numberVerified`) VALUES
-(97705168, 555557, 0);
+INSERT INTO `numbers` (`numberMobile`, `numberCode`, `numberVerified`, `numberCashier`, `numberVoucherID`, `numberdate`) VALUES
+(97705168, 567890, 0, 'siyuan@hotmail.com', 1, '2017-10-12 08:00:00');
 
 -- --------------------------------------------------------
 
@@ -89,6 +134,12 @@ INSERT INTO `users` (`userID`, `userEmail`, `userPassword`, `userRole`) VALUES
 --
 
 --
+-- Indexes for table `credit`
+--
+ALTER TABLE `credit`
+  ADD PRIMARY KEY (`creditID`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -97,10 +148,17 @@ ALTER TABLE `customers`
   ADD KEY `custMobile` (`custMobile`);
 
 --
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`historyID`);
+
+--
 -- Indexes for table `numbers`
 --
 ALTER TABLE `numbers`
-  ADD PRIMARY KEY (`numberMobile`);
+  ADD PRIMARY KEY (`numberMobile`),
+  ADD KEY `numberCashier` (`numberCashier`);
 
 --
 -- Indexes for table `users`
@@ -116,15 +174,25 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `credit`
+--
+ALTER TABLE `credit`
+  MODIFY `creditID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `historyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

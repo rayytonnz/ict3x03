@@ -14,6 +14,12 @@ $getEmail = $_SESSION['userEmail'];
 //echo $getEmail;
 
 session_admin_role_check();
+
+$query = "SELECT * FROM customers";
+
+
+$result = mysqli_query($db, $query);
+mysqli_close($db);
 ?>
 
 <html>
@@ -21,6 +27,7 @@ session_admin_role_check();
         <meta charset="UTF-8">
         <script src="Js/checkCapsLock.js"></script>
         <link rel="stylesheet" href="../css/navigation.css" type="text/css"/>
+          <link rel="stylesheet" href="../css/table.css" type="text/css"/>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -29,7 +36,7 @@ session_admin_role_check();
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="../css/content.css">
         <!-- Validator -->
         <script src="https://code.jquery.com/jquery-1.12.4.js">
         </script>
@@ -39,21 +46,35 @@ session_admin_role_check();
     </head>
     <body>
         <div class="topnav">
-            <a class="active" href="admin_home.php">Home</a>            
+            <a class="active" href="admin_home.php">Customer Account</a>
             <a id="right" href="../doLogout.php" class="btn-logout">Logout</a>
             <a id="right" href="admin_profile.php">Profile</a>
         </div>
 
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3>ADMIN Homepage</h3>
-                    <!--TODO: VIEW ALL CREDIT INFORMATION-->
-                   
-                    
-                </div>
-            </div>
+          <div style="padding:60px;">
+            <h2 class="text-center white">Customer Account</h2><br>
+            <table class="table" border="1">
+                <tr class="tableheader">
+                    <th class="th">MOBILE</th>    
+                    <th class="th">EMAIL</th>
+                    <th class="th">NAME</th>
+                    <th class="th">CREDIT PRICE</th>
+
+                </tr>
+                <?php
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>\n";
+                    echo "  <td  class='td'>" . $row['custMobile'] . "  </td>" . "\n";
+                    echo "  <td  class='td'>" . $row['custEmail'] . "  </td>" . "\n";
+                    echo "  <td  class='td'>" . $row['custName'] . "  </td>" . "\n";
+                    echo "  <td  class='td'>" . $row['custCredit'] . "  </td>" . "\n";
+                    echo "</tr>\n";
+                }
+                ?>
+            </table>
+
         </div>
+
 
     </body>
 </html>
