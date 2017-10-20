@@ -57,6 +57,10 @@ session_cashier_role_check();
                 <form method="post" action="../ForgetPassword/confirmPasswordResetPage.php">
                     <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Reset Password">
                 </form>
+                
+                <form method="post" action="../cashier/cashier_credit.php">
+                    <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="Choose Credit">
+                </form>
 
             </div>
         </div>

@@ -39,7 +39,7 @@ session_customer_role_check();
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js">
         </script>
-        
+
         <link rel="stylesheet" type="text/css" href="../css/content.css">
         <title></title>
     </head>
@@ -58,7 +58,9 @@ session_customer_role_check();
                 <div class="col-lg-12">
                     <!--TODO: Tab to show account details and OTP page-->
                     <h3>One Time Password</h3>
-                    
+                    <form method="post" action="../customer/customer_enterotp.php">
+                        <input type="submit" name="reset-submit" tabindex="4" class="form-control btn btn-blue" value="See pending transaction">
+                    </form>
                 </div>
             </div>
         </div>
