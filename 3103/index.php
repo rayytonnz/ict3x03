@@ -172,7 +172,7 @@ function generate_random_password($length = 10) {
                                                     $subject = "Shopping Credit - Password Reset";
 
                                                     send_mail($email, $message, $subject);
-                                                    $updatePassword = "UPDATE users SET userPassword = '" . $tempPassword . "' WHERE userID = '" . $userID . "'";
+                                                    $updatePassword = "UPDATE users SET userPassword = '" . $tempPassword . "', resetPassword = 1 WHERE userID = '" . $userID . "'";
                                                     $updateResult = mysqli_query($db, $updatePassword);
                                                     //redirect back 
                                                     header("Location: ../index.php");
