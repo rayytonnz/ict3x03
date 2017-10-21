@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 /** This file does the login function* */
@@ -8,7 +9,7 @@ include ("constant.php");
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$match_query = "SELECT * FROM users WHERE userEmail='" . $username. "' AND userPassword='" . $password. "'";
+$match_query = "SELECT * FROM users WHERE userEmail='" . $username . "' AND userPassword='" . $password . "'";
 $result = mysqli_query($db, $match_query);
 $resultrow = mysqli_num_rows($result);
 
@@ -17,30 +18,34 @@ $resetVal = $row['resetPassword'];
 
 // User credential pass
 if (mysqli_num_rows($result) == 1) {
-    session_login_save( $row['userRole'], $row['userEmail'],$row['userID']);
-    echo session_login_save($row['userRole'],$row['userEmail'], $row['userID']);
+    session_login_save($row['userRole'], $row['userEmail'], $row['userID']);
+    echo session_login_save($row['userRole'], $row['userEmail'], $row['userID']);
 
-    if ($row['userRole'] == CASHIER && $resetVal == 1) {
-        header("Location: ForgetPassword/confirmPasswordResetPage.php");
-        exit();
-    } else {
-        header("Location: cashier/cashier_home.php");
+    if ($row['userRole'] == CASHIER) {
+        if ($resetVal == 1) {
+            header("Location: ForgetPassword/confirmPasswordResetPage.php");
+            exit();
+        } else {
+            header("Location: cashier/cashier_home.php");
+        }
+    } else if ($row['userRole'] == CUSTOMER) {
+        if ($resetVal == 1) {
+            header("Location: ForgetPassword/confirmPasswordResetPage.php");
+            exit();
+        } else {
+            header("Location: customer/customer_home.php");
+        }
     }
-    if ($row['userRole'] == CUSTOMER && $resetVal == 1) {
-        header("Location: ForgetPassword/confirmPasswordResetPage.php");
-        exit();
-    } else {
-        header("Location: customer/customer_home.php");
+    if ($row['userRole'] == ADMIN) {
+        if ($resetVal == 1) {
+
+            header("Location: ForgetPassword/confirmPasswordResetPage.php");
+            exit();
+        } else {
+            header("Location: admin/admin_home.php");
+        }
     }
-    if ($row['userRole'] == ADMIN && $resetVal == 1) {
-        header("Location: ForgetPassword/confirmPasswordResetPage.php");
-        exit();
-    } else {
-        header("Location: admin/admin_home.php");
-    }
-          
-}
-else {
+} else {
     $_SESSION['err'] = "Wrong credentials, Please try again.";
     echo "<script>";
     echo "alert('Wrong Credentials')";
@@ -49,9 +54,7 @@ else {
     exit();
 }
 
- 
-
-function session_login_save($sessionSystemRoles, $sessionEmail,  $sessionID) {
+function session_login_save($sessionSystemRoles, $sessionEmail, $sessionID) {
     $_SESSION['userRole'] = $sessionSystemRoles;
     $_SESSION['userEmail'] = $sessionEmail;
     $_SESSION['userID'] = $sessionID;
