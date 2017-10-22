@@ -22,9 +22,9 @@ if (isset($_POST['resetPassword'])) {
 
 //    validate password. If both passwords entered are the same and alphanumeric 8 charac checking.
     if (mysqli_num_rows($getResult) == 1) {
-        if (check_password($confirmPassword, $newPassword) && CheckPassword()){
+        if (check_password($confirmPassword, $newPassword)){
             $queryUpdate = "UPDATE users 
-                            SET userPassword = '$confirmPassword' 
+                            SET resetPassword = 0, userPassword = '$confirmPassword' 
                             WHERE userID = '" . $getUserId . "'";
             $updateDB = mysqli_query($db, $queryUpdate);
 

@@ -90,7 +90,7 @@ function generate_random_password($length = 10) {
                         <div class="form-group col-md-12">
                             <input class="form-control" data-error="Please enter password." type="password" name="password" id="password" tabindex="2"  placeholder="Password" onkeypress="capLock(event)" required>
                             <div class="help-block with-errors"></div>
-                            <SPAN><div id="divMayus" style="visibility:hidden; color: red;">Caps Lock is ON</div> 
+                            <span><div id="divMayus" style="visibility:hidden; color: red;">Caps Lock is ON</div></span>
 
                         </div>
 

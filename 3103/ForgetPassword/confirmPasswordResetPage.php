@@ -8,24 +8,7 @@ $getUserId = $_SESSION['userID'];
 <script>
 var userID = <?php echo($getUserId); ?>;
 </script>
-<script>
-    function CheckPassword()
-    {
-        
-        var input = document.getElementById("inputNew");
-        var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-        
-        if (input.value.match(decimal))
-        {
-//            return true;
-        } else
-        {
-            alert('Password requires min 8 alphanumeric characters!');
-//            return false;
 
-        }
-    }
-</script>
 
 <html>
     <head>
@@ -72,22 +55,24 @@ var userID = <?php echo($getUserId); ?>;
                 <div class="panel-body text-center">
                     <div class="col-lg-12">
 
-                        <form action="doResetPassword.php" method="POST" name="resetForm">
+                        <form action="doResetPassword.php" method="POST" name="resetForm" onsubmit="return CheckPassword();" data-toggle="validator" style="display: block;">
                             <div class="form-group">
-                                <h3>Input password and submit [8 to 15 characters which contains at least one lowercase letter, one uppercase letter, one numeric digit, and one special character]</h3>
+                                
                                 <label for="">New password</label>
-                                <input type="password" class="form-control" name="inputNew" id="inputNew" placeholder="New password" minlength="8" required pattern="[a-zA-Z0-9._\s]+">
+                                <input type="password" class="form-control" name="inputNew" id="inputNew" placeholder="New password" minlength="8" required >
 
                                 <label for="">Confirm password</label>
-                                <input type="password" class="form-control" name="inputConfirm" id="inputConfirm" placeholder="Confirm password" required pattern="[a-zA-Z0-9._\s]+"  >
+                                <input type="password" class="form-control" name="inputConfirm" id="inputConfirm" placeholder="Confirm password"  minlength="8" required  >
                             </div>
 
                             <!--hidden post values over  -->
                             <input type ="hidden" name="userEmail" value="<?php echo $userEmail; ?>">
 
-                            <button type="submit" name="resetPassword" class="btn btn-primary" onclick="CheckPassword();">Reset Password</button>
+                            <input type="submit" name="resetPassword" class="btn btn-primary" value="Reset Password">
                             
                         </form>
+                        
+                        <p id="error_para" ></p>
                     </div>
                 </div>
             </div>         
@@ -95,6 +80,28 @@ var userID = <?php echo($getUserId); ?>;
 
     </body>
     <script src="../JS/checkSamePassword.js"></script>
+    <script>
+    function CheckPassword()
+    {
+        
+        var input = document.getElementById("inputNew");
+        var inputConfirm = document.getElementById("inputConfirm");
+        var decimal = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/;
+        
+        if (!decimal.test(input.value)){
+            error = " New password requires one uppercase, one lowercase, one digit and one special char (@#$%). Min 8 characters, max 20 characters.";
+            document.getElementById( "error_para" ).innerHTML = error;
+            return false;
+        } if (input.value !== inputConfirm.value){
+            error = " Passwords don't match ";
+            document.getElementById( "error_para" ).innerHTML = error;
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+</script>
 </head>
 </html>
 
