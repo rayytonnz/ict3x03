@@ -109,50 +109,7 @@ mysqli_close($db);
                 <p><input type="submit" name="submit" value="Verify" /></p> 
 
                 
-                <?php
-                if (isset($_POST['submit'])){
-                    //Supposed to work after verifying OTP
-                    //get all details
-                    //concatanate all values by using implode(),joined by "+" sign
-                    //TODO: hash up values
-                    //Generate QR Code
-                    $qrArr = array($creditName,$creditPrice,$creditdate,$creditcashier);
-                    $qrImp = implode("+",$qrArr);
-                    $qrExp = explode("+",$qrImp);
-                    print_r($qrExp);
-                    
-                    QRcode::png($qrImp,'../img/qrcode.png',QR_ECLEVEL_L,4);
-                    echo '<img src="../img/qrcode.png"/>';
                 
-
-                    //For Securing QR Code (WIP)
-                    /* $passwd = new HiddenString('correct horse battery staple');
-                    // Use random_bytes(16); to generate the salt:
-                    $salt = random_bytes(16);
-
-                    $encryptionKey = KeyFactory::deriveEncryptionKey($passwd, $salt);
-
-                    $qrArr = array($creditName,$creditPrice,$creditdate,$creditcashier);
-                    $qrImp = implode("+",$qrArr);
-                    $qrExp = explode("+",$qrImp);
-                    print_r($qrExp);
-                    
-                    $message = new HiddenString($prImp);
-                    $ciphertext = Symmetric::encrypt($message, $encryptionKey);
-                    QRcode::png($ciphertext,'../img/qrcode.png',QR_ECLEVEL_L,4);
-                    echo '<img src="../img/qrcode.png"/>';
-
-                    $decrypted = Symmetric::decrypt($ciphertext, $encryptionKey);
-
-                    var_dump($decrypted === $message); // bool(true)
-                }
-                    var_dump([
-                        SODIUM_LIBRARY_MAJOR_VERSION,
-                        SODIUM_LIBRARY_MINOR_VERSION,
-                        SODIUM_LIBRARY_VERSION
-                    ]);*/
-                }
-                ?>
             </form>          
         </div>
 
